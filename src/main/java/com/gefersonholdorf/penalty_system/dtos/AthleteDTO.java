@@ -17,6 +17,7 @@ public class AthleteDTO {
     private Double pot;
     private Double hab;
     private Position position;
+    private String teamName;
 
     public AthleteDTO(Athlete entity) {
         this.id = entity.getId();
@@ -24,5 +25,6 @@ public class AthleteDTO {
         this.pot = entity.getPot();
         this.hab = entity.getHab();
         this.position = entity.getPosition();
+        this.teamName = entity.getTeam().getName();
     }
 }

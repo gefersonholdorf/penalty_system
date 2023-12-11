@@ -9,24 +9,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gefersonholdorf.penalty_system.dtos.TeamDTO;
-import com.gefersonholdorf.penalty_system.services.TeamService;
+import com.gefersonholdorf.penalty_system.dtos.AthleteDTO;
+import com.gefersonholdorf.penalty_system.services.AthleteService;
 
 @RestController
-@RequestMapping(value = "/teams")
-public class TeamResource {
+@RequestMapping("/athletes")
+public class AthleteResource {
     
     @Autowired
-    private TeamService teamService;
+    private AthleteService athleteService;
 
     @GetMapping
-    public ResponseEntity<List<TeamDTO>> findAll() {
-        return ResponseEntity.ok().body(teamService.findAll());
+    public ResponseEntity<List<AthleteDTO>> findAll() {
+        return ResponseEntity.ok().body(athleteService.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TeamDTO> findById(@PathVariable Long id) {
-        TeamDTO dto = teamService.findById(id);
-        return ResponseEntity.ok().body(dto);
+    public ResponseEntity<AthleteDTO> findById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(athleteService.findById(id));
     }
+
 }
