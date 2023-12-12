@@ -7,8 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,28 +17,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_team")
-public class Team {
+@Table(name = "tb_group")
+public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String gymnasium;
-    private Double pot;
 
-    @OneToMany(mappedBy = "team")
-    List<Athlete> athletes = new ArrayList<>();
+    @OneToMany(mappedBy = "group")
+    private List<Team> teams = new ArrayList<>();
 
-    @OneToMany(mappedBy = "homeTeam")
-    List<Match> homeTeam = new ArrayList<>();
-
-    @OneToMany(mappedBy = "visitingTeam")
-    List<Match> visitingTeam = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Group group;
+    @OneToMany(mappedBy = "group")
+    private List<Match> matches = new ArrayList<>();
     
 }
