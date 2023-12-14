@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gefersonholdorf.penalty_system.dtos.TeamDTO;
+import com.gefersonholdorf.penalty_system.dtos.Team_AthleteDTO;
 import com.gefersonholdorf.penalty_system.entities.Team;
 import com.gefersonholdorf.penalty_system.repositories.TeamRepository;
 import com.gefersonholdorf.penalty_system.services.exceptions.ResourceNotFoundException;
@@ -26,9 +27,9 @@ public class TeamService {
     }
 
     @Transactional(readOnly = true)
-    public TeamDTO findById(Long id) {
+    public Team_AthleteDTO findById(Long id) {
         Optional<Team> obj = teamRepository.findById(id);
         Team entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found!"));
-        return new TeamDTO(entity);
+        return new Team_AthleteDTO(entity);
     }
 }

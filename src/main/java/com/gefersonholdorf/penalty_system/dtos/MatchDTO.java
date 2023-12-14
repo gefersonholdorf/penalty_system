@@ -3,7 +3,6 @@ package com.gefersonholdorf.penalty_system.dtos;
 import java.time.Instant;
 
 import com.gefersonholdorf.penalty_system.entities.Match;
-import com.gefersonholdorf.penalty_system.entities.Team;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,15 +15,17 @@ public class MatchDTO {
     
     private Long id;
     private Instant data;
-    private Team homeTeam;
-    private Team visitingTeam;
     private String gymnasium;
+    private String homeTeam;
+    private String visitingTeam;
+    private Long groupId;
 
     public MatchDTO(Match entity) {
         this.id = entity.getId();
         this.data = entity.getData();
-        this.homeTeam = entity.getHomeTeam();
-        this.visitingTeam = entity.getVisitingTeam();
         this.gymnasium = entity.getHomeTeam().getGymnasium();
+        this.homeTeam = entity.getHomeTeam().getName();
+        this.visitingTeam = entity.getVisitingTeam().getName();
+        this.groupId = entity.getGroup().getId();
     }
 }

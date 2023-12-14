@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gefersonholdorf.penalty_system.dtos.TeamDTO;
+import com.gefersonholdorf.penalty_system.dtos.Team_AthleteDTO;
 import com.gefersonholdorf.penalty_system.services.TeamService;
 
 @RestController
@@ -25,8 +26,8 @@ public class TeamResource {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TeamDTO> findById(@PathVariable Long id) {
-        TeamDTO dto = teamService.findById(id);
+    public ResponseEntity<Team_AthleteDTO> findById(@PathVariable Long id) {
+        Team_AthleteDTO dto = teamService.findById(id);
         return ResponseEntity.ok().body(dto);
     }
 }
