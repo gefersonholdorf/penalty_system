@@ -42,6 +42,5 @@ public class Team{
 
     @ManyToOne
     @JoinColumn(name = "group_id")
-    private Group group;
-    
+    private Group group;    
 }

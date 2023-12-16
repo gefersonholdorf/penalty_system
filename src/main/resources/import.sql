@@ -33,3 +33,5 @@ INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('202
 INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('2023-12-11 20:01:23', 6, 3, 2);
 INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('2023-12-11 20:01:23', 5, 1, 1);
 INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('2023-12-11 20:01:23', 3, 2, 2);
+
+INSERT INTO tb_result(home_team_goals, visiting_team_goals, match_id) VALUES(2, 1, 1);
