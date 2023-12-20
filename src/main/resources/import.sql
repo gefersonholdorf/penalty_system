@@ -1,12 +1,20 @@
 INSERT INTO tb_group(name) VALUES('Grupo A');
 INSERT INTO tb_group(name) VALUES('Grupo B');
 
-INSERT INTO tb_team(name, gymnasium, pot, group_id) VALUES('Central E.C', 'Cruz e Souza', 9, 1);
-INSERT INTO tb_team(name, gymnasium, pot, group_id) VALUES('Botafogo', 'Cruz e Souza', 8, 2);
-INSERT INTO tb_team(name, gymnasium, pot, group_id) VALUES('Inter', 'Russo', 7, 2);
-INSERT INTO tb_team(name, gymnasium, pot, group_id) VALUES('União São João', 'São João', 5, 1);
-INSERT INTO tb_team(name, gymnasium, pot, group_id) VALUES('Mitos', 'Alto Benedito', 5, 1);
-INSERT INTO tb_team(name, gymnasium, pot, group_id) VALUES('Cosmos', 'Santa Maria', 4, 2);
+INSERT INTO tb_team(name, gymnasium, pot) VALUES('Central E.C', 'Cruz e Souza', 9);
+INSERT INTO tb_team(name, gymnasium, pot) VALUES('Botafogo', 'Cruz e Souza', 8);
+INSERT INTO tb_team(name, gymnasium, pot) VALUES('Inter', 'Russo', 7);
+INSERT INTO tb_team(name, gymnasium, pot) VALUES('União São João', 'São João', 5);
+INSERT INTO tb_team(name, gymnasium, pot) VALUES('Mitos', 'Alto Benedito', 5);
+INSERT INTO tb_team(name, gymnasium, pot) VALUES('Cosmos', 'Santa Maria', 4);
+
+INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 1, 1);
+INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 2, 2)
+INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 3, 2);
+INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 4, 1);
+INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 5, 1);
+INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 6, 2);
+
 
 INSERT INTO tb_athlete(name, pot, hab, position, team_id) VALUES('Alexandre', 8, 10, 0, 1);
 INSERT INTO tb_athlete(name, pot, hab, position, team_id) VALUES('Filipe', 9, 7, 1, 1);
@@ -33,5 +41,3 @@ INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('202
 INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('2023-12-11 20:01:23', 6, 3, 2);
 INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('2023-12-11 20:01:23', 5, 1, 1);
 INSERT INTO tb_match(data, home_team_id, visiting_team_id, group_id) VALUES('2023-12-11 20:01:23', 3, 2, 2);
-
-INSERT INTO tb_result(home_team_goals, visiting_team_goals, match_id) VALUES(2, 1, 1);

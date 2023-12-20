@@ -27,7 +27,7 @@ public class Group {
     private String name;
 
     @OneToMany(mappedBy = "group")
-    private List<Team> teams = new ArrayList<>();
+    private List<ClassificationTeam> teams = new ArrayList<>();
 
     @OneToMany(mappedBy = "group")
     private List<Match> matches = new ArrayList<>();

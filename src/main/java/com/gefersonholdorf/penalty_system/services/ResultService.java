@@ -11,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gefersonholdorf.penalty_system.dtos.InsertResultDTO;
 import com.gefersonholdorf.penalty_system.dtos.ResultDTO;
 import com.gefersonholdorf.penalty_system.entities.Athlete;
+import com.gefersonholdorf.penalty_system.entities.ClassificationTeam;
 import com.gefersonholdorf.penalty_system.entities.Match;
 import com.gefersonholdorf.penalty_system.entities.Result;
 import com.gefersonholdorf.penalty_system.entities.Team;
 import com.gefersonholdorf.penalty_system.enums.Position;
+import com.gefersonholdorf.penalty_system.repositories.ClassificationTeamRepository;
 import com.gefersonholdorf.penalty_system.repositories.MatchRepository;
 import com.gefersonholdorf.penalty_system.repositories.ResultRepository;
 
@@ -27,20 +29,53 @@ public class ResultService {
     @Autowired
     private MatchRepository matchRepository;
 
+    @Autowired
+    private ClassificationTeamRepository classificationTeamRepository;
+
     @Transactional(readOnly = true)
     public List<ResultDTO> findAll() {
         List<Result> list = resultRepository.findAll();
         return list.stream().map(x -> new ResultDTO(x)).collect(Collectors.toList());
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public InsertResultDTO insert(InsertResultDTO dto) {
         Match match = matchRepository.getReferenceById(dto.getMatch());
+        ClassificationTeam homeTeam = classificationTeamRepository.getReferenceById(match.getHomeTeam().getId());
+        ClassificationTeam visitingTeam = classificationTeamRepository.getReferenceById(match.getVisitingTeam().getId());
+
+        //Entity created
         Result entity = new Result();
         entity.setId(dto.getId());
-        entity.setHomeTeamGoals(simulatedMatch(match.getHomeTeam(), match.getVisitingTeam()));
-        entity.setVisitingTeamGoals(simulatedMatch(match.getVisitingTeam(), match.getHomeTeam()));
+        Integer goalsHomeTeam = simulatedMatch(visitingTeam.getTeam(), visitingTeam.getTeam());
+        Integer goalsVisitingTeam = simulatedMatch(visitingTeam.getTeam(), homeTeam.getTeam());
+        entity.setHomeTeamGoals(goalsHomeTeam);
+        entity.setVisitingTeamGoals(goalsVisitingTeam);
         entity.setMatch(match);
+
+        //MathSimulation
+        homeTeam.setGoalsFor(homeTeam.getGoalsFor() + goalsHomeTeam);
+        homeTeam.setOwnGoals(homeTeam.getOwnGoals() + goalsVisitingTeam);
+        homeTeam.setGames(homeTeam.getGames() + 1);
+        visitingTeam.setGoalsFor(visitingTeam.getGoalsFor() + goalsVisitingTeam);
+        visitingTeam.setOwnGoals(visitingTeam.getOwnGoals() + goalsHomeTeam);
+        visitingTeam.setGames(visitingTeam.getGames() + 1);
+
+        if (goalsHomeTeam > goalsVisitingTeam) {
+            homeTeam.setVictories(homeTeam.getVictories() + 1);
+            visitingTeam.setDefeats(visitingTeam.getDefeats() + 1);
+        }
+        else if (goalsHomeTeam < goalsVisitingTeam) {
+            visitingTeam.setVictories(visitingTeam.getVictories() + 1);
+            homeTeam.setDefeats(homeTeam.getDefeats() + 1);
+        }
+        else {
+            homeTeam.setDraws(homeTeam.getDraws() + 1);
+            visitingTeam.setDraws(visitingTeam.getDraws() + 1);
+        }
+
+        classificationTeamRepository.save(homeTeam);
+        classificationTeamRepository.save(visitingTeam);
         resultRepository.save(entity);
         return new InsertResultDTO(entity);
     }
@@ -73,5 +108,14 @@ public class ResultService {
 
         return (randomNumber < percentualHomeTeam) ? true : false;
    }
+
+   static boolean verifiryIfIsNull(Integer number) {
+    if (number == null) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 }

@@ -16,11 +16,11 @@ public class GroupDTO {
     
     private Long id;
     private String name; 
-    private List<String> teams;
+    private List<ClassificationTeamDTO> teams;
 
     public GroupDTO(Group entity) {
         this.id = entity.getId();
         this.name = entity.getName();
-        this.teams = entity.getTeams().stream().map(x -> x.getName()).collect(Collectors.toList());
+        this.teams = entity.getTeams().stream().map(x -> new ClassificationTeamDTO(x)).collect(Collectors.toList());
     }
 }
