@@ -23,6 +23,8 @@ public class ClassificationTeam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Integer points;
+    private Integer balance;
     private Integer victories;
     private Integer draws;
     private Integer defeats;

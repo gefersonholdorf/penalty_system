@@ -56,22 +56,28 @@ public class ResultService {
         //MathSimulation
         homeTeam.setGoalsFor(homeTeam.getGoalsFor() + goalsHomeTeam);
         homeTeam.setOwnGoals(homeTeam.getOwnGoals() + goalsVisitingTeam);
+        homeTeam.setBalance(homeTeam.getGoalsFor() - homeTeam.getOwnGoals());
         homeTeam.setGames(homeTeam.getGames() + 1);
         visitingTeam.setGoalsFor(visitingTeam.getGoalsFor() + goalsVisitingTeam);
         visitingTeam.setOwnGoals(visitingTeam.getOwnGoals() + goalsHomeTeam);
+        visitingTeam.setBalance(visitingTeam.getGoalsFor() - visitingTeam.getOwnGoals());
         visitingTeam.setGames(visitingTeam.getGames() + 1);
 
         if (goalsHomeTeam > goalsVisitingTeam) {
             homeTeam.setVictories(homeTeam.getVictories() + 1);
+            homeTeam.setPoints(homeTeam.getPoints() + 3);
             visitingTeam.setDefeats(visitingTeam.getDefeats() + 1);
         }
         else if (goalsHomeTeam < goalsVisitingTeam) {
             visitingTeam.setVictories(visitingTeam.getVictories() + 1);
+            visitingTeam.setPoints(visitingTeam.getPoints() + 3);
             homeTeam.setDefeats(homeTeam.getDefeats() + 1);
         }
         else {
             homeTeam.setDraws(homeTeam.getDraws() + 1);
+            homeTeam.setPoints(homeTeam.getPoints() + 1);
             visitingTeam.setDraws(visitingTeam.getDraws() + 1);
+            visitingTeam.setPoints(visitingTeam.getPoints() + 1);
         }
 
         classificationTeamRepository.save(homeTeam);

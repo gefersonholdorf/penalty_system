@@ -25,8 +25,8 @@ public class ClassificationTeamDTO {
     public ClassificationTeamDTO(ClassificationTeam entity) {
         this.id = entity.getId();
         this.name = entity.getTeam().getName();
-        this.points = entity.getVictories() * 3 + entity.getDraws() * 1;
-        this.balance = entity.getGoalsFor() - entity.getOwnGoals();
+        this.points = entity.getPoints();
+        this.balance = entity.getBalance();
         this.victories = entity.getVictories();
         this.draws = entity.getDraws();
         this.defeats = entity.getDefeats();

@@ -8,12 +8,12 @@ INSERT INTO tb_team(name, gymnasium, pot) VALUES('União São João', 'São Joã
 INSERT INTO tb_team(name, gymnasium, pot) VALUES('Mitos', 'Alto Benedito', 5);
 INSERT INTO tb_team(name, gymnasium, pot) VALUES('Cosmos', 'Santa Maria', 4);
 
-INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 1, 1);
-INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 2, 2)
-INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 3, 2);
-INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 4, 1);
-INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 5, 1);
-INSERT INTO tb_classification_team (victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 6, 2);
+INSERT INTO tb_classification_team (points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 1, 1);
+INSERT INTO tb_classification_team (points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 2, 2)
+INSERT INTO tb_classification_team (points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 3, 2);
+INSERT INTO tb_classification_team (points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 4, 1);
+INSERT INTO tb_classification_team (points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 5, 1);
+INSERT INTO tb_classification_team (points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 6, 2);
 
 
 INSERT INTO tb_athlete(name, pot, hab, position, team_id) VALUES('Alexandre', 8, 10, 0, 1);

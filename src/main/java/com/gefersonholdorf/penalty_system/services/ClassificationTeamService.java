@@ -19,7 +19,7 @@ public class ClassificationTeamService {
 
     @Transactional(readOnly = true)
     public List<ClassificationTeamDTO> findAll() {
-        List<ClassificationTeam> list = classificationTeamRepository.findAll();
+        List<ClassificationTeam> list = classificationTeamRepository.updateTableClassification();
         return list.stream().map(x -> new ClassificationTeamDTO(x)).collect(Collectors.toList());
     }
 }

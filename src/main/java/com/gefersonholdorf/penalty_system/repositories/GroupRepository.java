@@ -7,5 +7,4 @@ import com.gefersonholdorf.penalty_system.entities.Group;
 
 @Repository
 public interface GroupRepository extends JpaRepository<Group, Long>{
-    
 }
