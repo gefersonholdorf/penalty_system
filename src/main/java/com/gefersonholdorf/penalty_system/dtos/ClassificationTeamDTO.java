@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class ClassificationTeamDTO {
     
     private Long id;
+    private String position;
     private String name;
     private Integer points;
     private Integer balance;
@@ -23,6 +24,7 @@ public class ClassificationTeamDTO {
     private Integer games;
 
     public ClassificationTeamDTO(ClassificationTeam entity) {
+        this.position = entity.getPosition();
         this.id = entity.getId();
         this.name = entity.getTeam().getName();
         this.points = entity.getPoints();

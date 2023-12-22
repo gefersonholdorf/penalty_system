@@ -28,15 +28,24 @@ public class GroupService {
     @Transactional
     public List<GroupDTO> findAll() {
         List<Group> list = groupRepository.findAll();
-        List<Group> findAllUpdated = new ArrayList<>();
-    
-        for (Integer i = 0; i < list.size(); i++) {
-            for (Group g : list) {
-                g.setTeams(classificationTeamRepository.updateTableClassification());
+        
+        List<ClassificationTeam> listClassification = classificationTeamRepository.updateTableClassification();
+
+        for(Integer i = 0; i < list.size(); i++) { 
+            List<ClassificationTeam> newList = new ArrayList<>();
+            for(ClassificationTeam t : listClassification) {
+                for (Integer j = 0; j < list.get(i).getTeams().size(); j++) {
+                    if (t.equals(list.get(i).getTeams().get(j)))  {
+                    newList.add(t);
+                    }
+                }
             }
+
+            list.get(i).setTeams(newList);
+            updatedPositions(newList);
         }
 
-        return findAllUpdated.stream().map(x -> new GroupDTO(x)).collect(Collectors.toList());
+        return list.stream().map(x -> new GroupDTO(x)).collect(Collectors.toList());
     }
 
     @Transactional
@@ -52,6 +61,16 @@ public class GroupService {
             }
         }
         entity.setTeams(newList);
+        updatedPositions(newList);
         return new GroupDTO(entity);
+    }
+
+    static void updatedPositions(List<ClassificationTeam> classification) {
+        Integer i = 1;
+
+        for (ClassificationTeam c : classification) {
+            c.setPosition(i + "º");
+            i++;
+        }
     }
 }

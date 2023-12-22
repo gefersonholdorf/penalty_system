@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,22 +19,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_group")
-public class Group {
+@Table(name = "tb_round")
+public class Round {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String numberRound;
 
-    @OneToMany(mappedBy = "group")
-    private List<ClassificationTeam> teams = new ArrayList<>();
-
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "round")
     private List<Match> matches = new ArrayList<>();
 
-    @OneToMany(mappedBy = "group")
-    private List<Round> rounds = new ArrayList<>();
-    
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 }

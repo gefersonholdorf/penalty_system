@@ -18,6 +18,7 @@ public class MatchDTO {
     private String gymnasium;
     private String homeTeam;
     private String visitingTeam;
+    private String round;
     private Long groupId;
 
     public MatchDTO(Match entity) {
@@ -26,6 +27,7 @@ public class MatchDTO {
         this.gymnasium = entity.getHomeTeam().getGymnasium();
         this.homeTeam = entity.getHomeTeam().getName();
         this.visitingTeam = entity.getVisitingTeam().getName();
+        this.round = entity.getRound().getNumberRound();
         this.groupId = entity.getGroup().getId();
     }
 }

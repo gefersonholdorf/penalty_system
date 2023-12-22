@@ -114,14 +114,4 @@ public class ResultService {
 
         return (randomNumber < percentualHomeTeam) ? true : false;
    }
-
-   static boolean verifiryIfIsNull(Integer number) {
-    if (number == null) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
 }

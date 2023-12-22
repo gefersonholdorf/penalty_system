@@ -21,6 +21,7 @@ public class ResultDTO {
     private Integer visitingTeamGoals;
     private String homeTeam;
     private String visitingTeam;
+    private String round;
     private Long groupId;
 
      public ResultDTO(Result entity) {
@@ -32,6 +33,7 @@ public class ResultDTO {
         this.homeTeamGoals = entity.getHomeTeamGoals();
         this.visitingTeamGoals = entity.getVisitingTeamGoals();
         this.visitingTeam = entity.getMatch().getVisitingTeam().getName();
+        this.round = entity.getMatch().getRound().getNumberRound();
         this.groupId = entity.getMatch().getGroup().getId();
     }
 }

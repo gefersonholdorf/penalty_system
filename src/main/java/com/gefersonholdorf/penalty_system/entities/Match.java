@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "tb_match")
 public class Match {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,4 +41,15 @@ public class Match {
 
     @OneToOne(mappedBy = "match")
     private Result result;
+
+    @ManyToOne
+    @JoinColumn(name = "round_id")
+    private Round round;
+
+    public Match(Instant instant, Team homeTeam, Team visitingTeam, Group group) {
+        this.data = instant;
+        this.homeTeam = homeTeam;
+        this.visitingTeam = visitingTeam;
+        this.group = group;
+    }
 }
