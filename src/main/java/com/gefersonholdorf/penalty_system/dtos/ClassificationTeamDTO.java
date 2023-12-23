@@ -24,7 +24,7 @@ public class ClassificationTeamDTO {
     private Integer games;
 
     public ClassificationTeamDTO(ClassificationTeam entity) {
-        this.position = entity.getPosition();
+        this.position = entity.getPosition() + "º";
         this.id = entity.getId();
         this.name = entity.getTeam().getName();
         this.points = entity.getPoints();

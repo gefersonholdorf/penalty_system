@@ -26,7 +26,7 @@ public class Round {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String numberRound;
+    private Integer numberRound;
 
     @OneToMany(mappedBy = "round")
     private List<Match> matches = new ArrayList<>();

@@ -21,7 +21,7 @@ public class ResultDTO {
     private Integer visitingTeamGoals;
     private String homeTeam;
     private String visitingTeam;
-    private String round;
+    private Integer round;
     private Long groupId;
 
      public ResultDTO(Result entity) {

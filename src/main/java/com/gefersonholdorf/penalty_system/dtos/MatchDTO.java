@@ -18,7 +18,7 @@ public class MatchDTO {
     private String gymnasium;
     private String homeTeam;
     private String visitingTeam;
-    private String round;
+    private Integer round;
     private Long groupId;
 
     public MatchDTO(Match entity) {

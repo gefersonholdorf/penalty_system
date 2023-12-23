@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gefersonholdorf.penalty_system.dtos.InsertResultDTO;
+import com.gefersonholdorf.penalty_system.dtos.InsertRoundDTO;
 import com.gefersonholdorf.penalty_system.dtos.RoundDTO;
 import com.gefersonholdorf.penalty_system.entities.ClassificationTeam;
 import com.gefersonholdorf.penalty_system.entities.Group;
@@ -30,6 +32,15 @@ public class RoundService {
     @Autowired
     private MatchRepository matchRepository;
 
+    @Autowired
+    private ResultService resultService;
+
+    @Transactional(readOnly = true)
+    public List<RoundDTO> findAll () {
+        List<Round> list = roundRepository.findAll();
+
+        return list.stream().map(x -> new RoundDTO(x)).collect(Collectors.toList());
+    }
 
 
     @Transactional
@@ -45,11 +56,13 @@ public class RoundService {
 
             List<Round> rounds = new ArrayList<>();
 
+            Integer numberRounds = listTeams.size() - 1;
+
             //Created Round
-            for (Integer i = 0; i < listTeams.size() - 1; i++) {
+            for (Integer i = 0; i < numberRounds; i++) {
 
                 Round round = new Round();
-                round.setNumberRound((i + 1) + " Round");
+                round.setNumberRound(i + 1);
 
                 //Store matches
                 List<Match> matches = new ArrayList<>();
@@ -71,7 +84,6 @@ public class RoundService {
                 round.setGroup(g);
                 roundRepository.save(round);
 
-                // Rotaciona os times para a próxima rodada
                 listTeams.add(1, listTeams.remove(listTeams.size() - 1));
 
                 rounds.add(round);
@@ -82,6 +94,21 @@ public class RoundService {
         }
 
         return roundsAll.stream().map(x -> new RoundDTO(x)).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public InsertRoundDTO insert(InsertRoundDTO dto) {
+        Round round = roundRepository.getReferenceById(dto.getNumberRound());
+
+
+        for (Match m : round.getMatches()) {
+            if (m.getRound().getId() == round.getId()) {
+                resultService.insert(new InsertResultDTO(m.getId(), m.getId()));
+            }
+        }
+
+        roundRepository.save(round);
+        return new InsertRoundDTO(round);
     }
     
 }

@@ -1,5 +1,9 @@
-INSERT INTO tb_group(name) VALUES('Grupo A');
-INSERT INTO tb_group(name) VALUES('Grupo B');
+INSERT INTO tb_championship(name) VALUES ('Liga Benedito de Penaltis');
+
+INSERT INTO tb_group(name, championship_id) VALUES('Grupo A', 1);
+INSERT INTO tb_group(name, championship_id) VALUES('Grupo B', 1);
+
+INSERT INTO tb_final_phase(name, championship_id) VALUES('Final Phase', 1)
 
 INSERT INTO tb_team(name, gymnasium, pot) VALUES('Central E.C', 'Cruz e Souza', 9);
 INSERT INTO tb_team(name, gymnasium, pot) VALUES('Botafogo', 'Cruz e Souza', 8);
@@ -10,14 +14,14 @@ INSERT INTO tb_team(name, gymnasium, pot) VALUES('Cosmos', 'Santa Maria', 4);
 INSERT INTO tb_team(name, gymnasium, pot) VALUES('Real Liberdade', 'Liberdade', 5);
 INSERT INTO tb_team(name, gymnasium, pot) VALUES('Centro', 'Cruz e Souza', 6);
 
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 1, 1);
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 2, 2);
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 3, 2);
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 4, 1);
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 5, 1);
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 6, 2);
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 7, 1);
-INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES ('N/A', 0, 0, 0, 0, 0, 0, 0, 0, 8, 2);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 2);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 1);
+INSERT INTO tb_classification_team (position, points, balance, victories, draws, defeats, goals_for, own_goals, games, team_id, group_id) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 2);
 
 
 INSERT INTO tb_athlete(name, pot, hab, position, team_id) VALUES('Alexandre', 8, 10, 0, 1);

@@ -69,7 +69,7 @@ public class GroupService {
         Integer i = 1;
 
         for (ClassificationTeam c : classification) {
-            c.setPosition(i + "º");
+            c.setPosition(i);
             i++;
         }
     }

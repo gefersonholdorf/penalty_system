@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class RoundDTO {
     
     private Long id;
-    private String numberRound;
+    private Integer numberRound;
     private String group;
     private List<MatchDTO> rounds;
 
